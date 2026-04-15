@@ -10,6 +10,11 @@ public class Consulta {
     private Instant dataHora;
     private String especialidade;
     private String nomeMedico;
+    private boolean disponivel = true;
+
+    public int getId() {
+        return id;
+    }
 
     public Instant getDataHora() {
         return dataHora;
@@ -23,6 +28,13 @@ public class Consulta {
         return nomeMedico;
     }
 
+    public boolean isDisponivel() {
+        return disponivel;
+    }
+
+    public void setDisponivel(boolean disponivel) {
+        this.disponivel = disponivel;
+    }
 
     public Consulta(int id, String especialidadeConsulta, String nomeMedico, Instant dataHora) {
         this.id = id;
