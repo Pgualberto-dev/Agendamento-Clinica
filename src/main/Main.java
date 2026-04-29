@@ -52,13 +52,13 @@ public class Main {
                     }
                     break;
                 case 4:
-
+                    aServices.cancelarAgendamento(sc, clinica);
                     break;
                 case 5:
-
+                    sc.nextLine();
+                    cServices.listarConsultasDoDia(sc, clinica);
                     break;
                 case 6:
-
                     finalizar = false;
                     System.out.println("Finalizando o sistema...");
                     break;

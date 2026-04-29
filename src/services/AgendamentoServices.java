@@ -45,12 +45,38 @@ public class AgendamentoServices {
             return; // O 'return' encerra o metodo aqui na hora, impedindo o agendamento
         }
 
-            Agendamento novoAgendamento = new Agendamento(pacienteEncontrado, consultaEncontrada);
-            clinica.getAgendamentoList().add(novoAgendamento);
-            consultaEncontrada.setDisponivel(false); // Marca a consulta como ocupada
-            System.out.println("Agendamento criado com sucesso!");
-
-        }
+        Agendamento novoAgendamento = new Agendamento(pacienteEncontrado, consultaEncontrada);
+        clinica.getAgendamentoList().add(novoAgendamento);
+        consultaEncontrada.setDisponivel(false); // Marca a consulta como ocupada
+        System.out.println("Agendamento criado com sucesso!");
 
     }
+
+    public void cancelarAgendamento (Scanner sc, Clinica clinica) {
+        System.out.println("--Cancelando Agendamento--");
+        for (Agendamento ag : clinica.getAgendamentoList()) {
+            System.out.println(ag);
+        }
+        System.out.println("Digite o ID do Agendamento:");
+        int idAgendamento = sc.nextInt();
+        sc.nextLine();
+        Agendamento agendamentoEncontrado = clinica.getAgendamentoList().stream()
+                .filter(a -> a.getIdAgendamento() == idAgendamento)
+                .findFirst() // Pega o primeiro que bater com o ID
+                .orElse(null);
+
+        if (agendamentoEncontrado == null) {
+            System.out.println("Erro: Consulta com ID " + idAgendamento + " não foi encontrada no sistema.");
+            return;
+        }
+        clinica.getAgendamentoList().remove(agendamentoEncontrado);
+        agendamentoEncontrado.getConsulta().setDisponivel(true); // Marca a consulta como disponível novamente
+        System.out.println("Agendamento cancelado com sucesso!");
+
+    }
+
+
+}
+
+
 

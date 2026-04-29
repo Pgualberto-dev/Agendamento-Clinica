@@ -24,4 +24,10 @@ public class Agendamento {
         this.paciente = paciente;
         this.consulta = consulta;
     }
+
+    @Override
+    public String toString() {
+        return " [Consulta] - " + this.consulta + " | " +
+                "[Paciente] - " + paciente.getNomePaciente() + " | ";
+    }
 }

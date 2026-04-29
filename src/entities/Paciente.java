@@ -40,7 +40,6 @@ public class Paciente {
 
     @Override
     public String toString() {
-        return "Paciente{" +
-                " " + nomePaciente + "";
+        return  "["+idPaciente +"] - " + nomePaciente + " ";
     }
 }
