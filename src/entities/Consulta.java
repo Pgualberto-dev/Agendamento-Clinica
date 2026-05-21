@@ -8,19 +8,18 @@ public class Consulta {
 
     private int id;
     private Instant dataHora;
-    private String especialidade;
+    private TypeSpecialty especialidade;
     private String nomeMedico;
-    private boolean disponivel = true;
+    private Status statusConsulta;
 
     public int getId() {
         return id;
     }
-
     public Instant getDataHora() {
         return dataHora;
     }
 
-    public String getEspecialidade() {
+    public TypeSpecialty getEspecialidade() {
         return especialidade;
     }
 
@@ -28,25 +27,23 @@ public class Consulta {
         return nomeMedico;
     }
 
-    public boolean isDisponivel() {
-        return disponivel;
+    public Status getStatusConsulta() {
+        return statusConsulta;
     }
-
-    public void setDisponivel(boolean disponivel) {
-        this.disponivel = disponivel;
+    public void setStatusConsulta(Status statusConsulta) {
+        this.statusConsulta = statusConsulta;
     }
-
-    public Consulta(int id, String especialidadeConsulta, String nomeMedico, Instant dataHora) {
+    public Consulta(int id, TypeSpecialty especialidadeConsulta, String nomeMedico, Instant dataHora) {
         this.id = id;
         this.dataHora = dataHora;
         this.especialidade = especialidadeConsulta;
         this.nomeMedico = nomeMedico;
-
+        this.statusConsulta = Status.DISPONIVEL;
     }
 
     @Override
     public String toString() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy | HH:mm").withZone(ZoneId.systemDefault());
-        return "ID: " + id + " | Especialidade: " + especialidade + " | Médico: " + nomeMedico + " | Data e Hora: " + dtf.format(dataHora);
+        return "ID: " + id + " | Especialidade: " + especialidade + " | Médico: " + nomeMedico + " | Data e Hora: " + dtf.format(dataHora) + " | " + statusConsulta;
     }
 }
