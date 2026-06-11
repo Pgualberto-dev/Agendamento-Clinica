@@ -3,27 +3,11 @@ package entities;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Paciente {
+public class Paciente extends Pessoa {
 
-    private int idPaciente;
-    private String nomePaciente;
+    private String documentoPaciente;
     private List <Consulta> consultaCliente = new ArrayList<>();
 
-    public int getIdPaciente() {
-        return idPaciente;
-    }
-
-    public void setIdPaciente(int idPaciente) {
-        this.idPaciente = idPaciente;
-    }
-
-    public String getNomePaciente() {
-        return nomePaciente;
-    }
-
-    public void setNomePaciente(String nomePaciente) {
-        this.nomePaciente = nomePaciente;
-    }
 
     public List<Consulta> getConsultaCliente() {
         return consultaCliente;
@@ -33,13 +17,18 @@ public class Paciente {
         this.consultaCliente = consultaCliente;
     }
 
-    public Paciente(int idPaciente, String nomePaciente) {
-        this.idPaciente = idPaciente;
-        this.nomePaciente = nomePaciente;
+    public Paciente(int idPaciente, String nomePaciente, String documentoPaciente) {
+        super(idPaciente, nomePaciente);
+        this.documentoPaciente = documentoPaciente;
     }
 
     @Override
     public String toString() {
-        return  "["+idPaciente +"] - " + nomePaciente + " ";
+        return  "["+id +"] - " + nome + " [" + documentoPaciente + "]";
+    }
+
+    @Override
+    public String getDocumento() {
+        return documentoPaciente;
     }
 }

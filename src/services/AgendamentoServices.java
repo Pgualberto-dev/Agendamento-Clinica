@@ -26,7 +26,7 @@ public class AgendamentoServices {
         final int idPacienteFinal = idPaciente;
 
         Paciente pacienteEncontrado = clinica.getPacienteList().stream()
-                .filter(p -> p.getIdPaciente() == idPacienteFinal)
+                .filter(p -> p.getId() == idPacienteFinal)
                 .findFirst()
                 .orElse(null);
 

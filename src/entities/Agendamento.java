@@ -25,9 +25,19 @@ public class Agendamento {
         this.consulta = consulta;
     }
 
+    public Agendamento(int idAgendamento, Paciente paciente, Consulta consulta) {
+        this.idAgendamento = idAgendamento;
+        this.paciente = paciente;
+        this.consulta = consulta;
+
+        if (idAgendamento >= contadorId) {
+            contadorId = idAgendamento + 1;
+        }
+    }
+
     @Override
     public String toString() {
         return " [Consulta] - " + this.consulta + " | " +
-                "[Paciente] - " + paciente.getNomePaciente() + " | ";
+                "[Paciente] - " + paciente.getNome() + " | ";
     }
 }

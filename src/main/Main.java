@@ -5,6 +5,7 @@ import entities.Consulta;
 import services.AgendamentoServices;
 import services.ConsultaServices;
 import services.PacienteServices;
+import services.PersistenciaServices;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -17,8 +18,11 @@ public class Main {
         ConsultaServices cServices = new ConsultaServices();
         PacienteServices pServices = new PacienteServices();
         AgendamentoServices aServices = new AgendamentoServices();
+        PersistenciaServices persistencia = new PersistenciaServices();
 
         boolean finalizar = true;
+
+        persistencia.carregarDados(clinica);
 
         while (finalizar) {
             System.out.println("______________________");
@@ -60,6 +64,7 @@ public class Main {
                     break;
                 case 6:
                     finalizar = false;
+                    persistencia.salvarDados(clinica);
                     System.out.println("Finalizando o sistema...");
                     break;
                 default:
